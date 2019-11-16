@@ -1,3 +1,9 @@
+stages:
+ - run
+
+
+Build Image:
+  stage: run
   script:
     - docker build -t mrtolerant-ru .
     - docker run mrtolerant-ru
