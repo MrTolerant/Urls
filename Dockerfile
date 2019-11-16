@@ -1,6 +1,6 @@
 #           STAGE 1
 # base image
-FROM node:alpine as build
+FROM node:12.10.0-alpine as build
 # set working directory
 #RUN mkdir /app
 WORKDIR /app
