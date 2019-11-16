@@ -1,28 +1,40 @@
-build site:
-  image: node:6
-  stage: build
-  script:
-    - npm install --progress=false
-    - npm run build
-  artifacts:
-    expire_in: 1 week
-    paths:
-      - dist
+image: node:12.13.0
+cache:
+  paths:
+    - node_modules/
 
-unit test:
-  image: node:6
+stages:
+  - test
+  - stage
+  - production
+
+TEST:
   stage: test
   script:
-    - npm install --progress=false
-    - npm run unit
+    - yarn install
+    - yarn run test
 
-deploy:
-  image: alpine
-  stage: deploy
+# STAGE:
+#   # type: deploy
+#   stage: stage
+#   image: ruby:latest
+#   script:
+#     - apt-get update -qy
+#     - apt-get install -y ruby-dev
+#     - gem install dpl
+#     - dpl --provider=heroku --app=$STAGE_HEROKU_APP_NAME --api-key=$STAGE_HEROKU_API_KEY
+#   only:
+#     - develop
+
+PRODUCTION:
+  type: deploy
+  stage: production
+  image: ruby:latest
   script:
-    - apk add --no-cache rsync openssh
-    - mkdir -p ~/.ssh
-    - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_dsa
-    - chmod 600 ~/.ssh/id_dsa
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-    - rsync -rav --delete dist/ user@server.com:/your/project/path/
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY --skip_cleanup
+  only:
+    - master
+  when: manual
