@@ -9,7 +9,7 @@
     "start:dev": "webpack-dev-server --mode development --config ./webpack.development.config.js --hot --open",
     "start": "NODE_ENV=production node start.js",
     "clean": "rimraf dist",
-    "production": "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
+    "build": "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
     "lint": "eslint ./client/**/**.js ./server/**/**.js ",
     "lint:server": "eslint ./server/**/**.js",
     "test": "jest",
@@ -17,8 +17,7 @@
     "coverage": "jest --coverage",
     "next:build": "next",
     "watch:server": "nodemon start.js --ignore \"*.hot-update.json\" --ignore \"js/bundle.js\" --ignore \"css/main.css\" --watch server --watch client --exec \"npm run lint:server && node\"",
-    "build:prod": " webpack --config webpack.production.frontend.config.js --progress --profile --colors",
-    "heroku-postbuild": " webpack --config webpack.production.frontend.config.js --progress --profile --colors"
+    "build:prod": " webpack --config webpack.production.config.js --progress --profile --colors"
   },
   "author": "",
   "license": "MIT",

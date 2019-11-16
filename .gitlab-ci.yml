@@ -1,42 +1,4 @@
-image: node:12.13.0
-cache:
-  paths:
-    - node_modules/
-tags:
-  - shell
-
-stages:
-  - test
-  - stage
-  - production
-
-TEST:
-  stage: test
+build_image:
   script:
-    - yarn install
-    - yarn run test
-
-# STAGE:
-#   # type: deploy
-#   stage: stage
-#   image: ruby:latest
-#   script:
-#     - apt-get update -qy
-#     - apt-get install -y ruby-dev
-#     - gem install dpl
-#     - dpl --provider=heroku --app=$STAGE_HEROKU_APP_NAME --api-key=$STAGE_HEROKU_API_KEY
-#   only:
-#     - develop
-
-PRODUCTION:
-  type: deploy
-  stage: production
-  image: ruby:latest
-  script:
-    - apt-get update -qy
-    - apt-get install -y ruby-dev
-    - gem install dpl
-    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY --skip_cleanup
-  only:
-    - master
-  when: manual
+    - docker build -t mrtolerant-ru .
+    - docker run mrtolerant-ru
