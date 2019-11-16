@@ -11,7 +11,7 @@ COPY package.json /app/package.json
 RUN node -v && yarn install
 COPY . .
 EXPOSE 80
-CMD [ "node", "start.js" ]
+CMD [ "yarn", "start" ]
 
 # build app
 #RUN yarn run build
