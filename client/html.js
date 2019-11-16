@@ -4,7 +4,7 @@ const Html = ({
   return `
   <!DOCTYPE html>
   <html>
-    <head>
+    <head class="is-preload">
       <meta charset="UTF-8">
       <title>MrTolerant</title>
       <link rel="stylesheet" type="text/css" href="/css/main.css" />

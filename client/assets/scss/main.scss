@@ -1,10 +1,11 @@
+@import 'bootstrap/bootstrap.scss';
 @import 'libs/vars';
 @import 'libs/functions';
 @import 'libs/mixins';
 @import 'libs/vendor';
 @import 'libs/breakpoints';
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900");
-@import url("fontawesome-all.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css");
 
 
 // Breakpoints.
@@ -224,7 +225,7 @@
 	#overlay {
 		@include vendor('animation', 'overlay #{_duration(overlay)} #{$delay-overlay} forwards');
 		background-attachment: fixed, fixed;
-		background-image: url('images/overlay-pattern.png'), url('images/overlay.svg');
+		background-image: url('/images/overlay-pattern.png'), url('/images/overlay.svg');
 		background-position: top left, center center;
 		background-repeat: repeat, no-repeat;
 		background-size: auto, cover;
