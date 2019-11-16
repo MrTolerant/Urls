@@ -5,5 +5,6 @@ stages:
 Build Image:
   stage: run
   script:
+    - docker -v
     - docker build -t mrtolerant-ru .
     - docker run -d -p 80:80  mrtolerant-ru
