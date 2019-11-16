@@ -7,4 +7,4 @@ Build Image:
   script:
     - docker -v
     - docker build -t mrtolerant-ru .
-    - docker run -d -p 80:80  mrtolerant-ru
+    - docker run -d -p 80:3000  mrtolerant-ru
