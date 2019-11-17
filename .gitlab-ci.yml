@@ -5,5 +5,6 @@ stages:
 Compose UP:
   stage: run
   script:
+    - ls -la
     - docker -v
-    - docker-compose up -d --force-recreate --always-recreate-deps --build
+    - docker-compose -f docker-compose.yml up -d --force-recreate --always-recreate-deps --build
