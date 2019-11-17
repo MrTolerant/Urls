@@ -1,28 +1,26 @@
-#           STAGE 1
-FROM node:alpine as build
-COPY package.json /app/package.json
-COPY yarn.lock /app/yarn.lock
+# ---- Базовый Node ----
+FROM node:carbon AS base
+# Создать директорию app
 WORKDIR /app
 
-ENV PATH /app/node_modules/.bin:$PATH
-RUN yarn cache clean && \
-    yarn install --no-progress --ignore-optional && \
-    npm config set scripts-prepend-node-path true
+# ---- Зависимости ----
+FROM base AS dependencies
+COPY package*.json ./
+COPY yarn.lock ./
+RUN yarn install
+
+# ---- Скопировать файлы/билд ----
+FROM dependencies AS build
+WORKDIR /app
 COPY . .
-RUN yarn run build
+RUN npm rebuild node-sass && yarn run build
+
+# --- Выпуск, используя Alpine ----
+FROM node:alpine AS release
+WORKDIR /app
+COPY --from=dependencies /app/package.json ./
+#USER node
+RUN yarn install --only=production --ignore-optional
+COPY --from=build /app ./
+#COPY --chown=node:node . .
 CMD [ "yarn", "run", "start" ]
-
-# build app
-#RUN yarn run build
-# Production Environment
-
-
-#           STAGE 2
-#FROM nginx
-# Copy builded app to Nginx
-#COPY --from=build /app/dist/assets /usr/share/nginx/html
-#COPY --from=build /app/nginx.conf /etc/nginx/nginx.conf
-# Map port 80 on host to contaiter
-#EXPOSE 80
-# Run Nginx
-#CMD ["nginx", "-g", "daemon off;"]
