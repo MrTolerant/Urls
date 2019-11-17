@@ -7,4 +7,4 @@ Compose UP:
   script:
     - ls -la
     - docker -v
-    - docker-compose -f docker-compose.yml up -d --force-recreate --always-recreate-deps --build
+    - docker-compose -f docker-compose.yml up -d --force-recreate --build
