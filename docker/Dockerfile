@@ -23,4 +23,5 @@ COPY --from=dependencies /app/package.json ./
 RUN yarn install --only=production --ignore-optional
 COPY --from=build /app ./
 #COPY --chown=node:node . .
+EXPOSE 3000
 CMD [ "yarn", "run", "start" ]
