@@ -8,7 +8,7 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json /app/package.json
 # install and cache app dependencies
-RUN node -v && yarn install
+RUN node -v && yarn install --no-progress --ignore-optional
 COPY . .
 EXPOSE 80
 CMD [ "yarn", "start" ]
