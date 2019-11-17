@@ -1,20 +1,15 @@
 #           STAGE 1
-# base image
-FROM node:12.10.0-alpine as build
-# set working directory
-#RUN mkdir /app
-WORKDIR /app
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+FROM node:alpine as build
 COPY package.json /app/package.json
-# install and cache app dependencies
-RUN node -v && yarn cache clean && \
+COPY yarn.lock /app/yarn.lock
+WORKDIR /app
+
+ENV PATH /app/node_modules/.bin:$PATH
+RUN yarn cache clean && \
     yarn install --no-progress --ignore-optional && \
     npm config set scripts-prepend-node-path true
 COPY . .
 RUN yarn run build
-
-EXPOSE 80
 CMD [ "yarn", "run", "start" ]
 
 # build app

@@ -3,8 +3,7 @@ services:
   frontend:
     image: webpack
     build:
-      context: ./
+      context: ../
+      dockerfile: docker/Dockerfile
     ports:
       - 80:3000
-    volumes:
-      - ./:/bindmount:rw
