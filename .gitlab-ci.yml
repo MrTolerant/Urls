@@ -6,4 +6,4 @@ Compose UP:
   stage: run
   script:
     - docker -v
-    - docker-compose up --force-recreate
+    - docker-compose up -d --force-recreate
