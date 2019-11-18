@@ -1,35 +1,21 @@
-version: "3.3"
+version: "3.7"
 services:
-  nodejs:
-    image: nodejs
-    volumes:
-      - "./app:/src/app"
-    ports:
-      - "3000"
-
+  node:
     build:
+      target: nodeServer
       context: ../
       dockerfile: docker/Dockerfile
-    container_name: nodejs
+    container_name: node
     restart: unless-stopped
-    # network_mode: host
-    networks:
-      - app-network
 
-  webserver:
-    build: ../nginx/
-    image: nginx:mainline-alpine
-    container_name: webserver
+  nginx:
+    build:
+      target: webServer
+      context: ../
+      dockerfile: docker/Dockerfile
+    container_name: nginx
     restart: unless-stopped
     ports:
       - "80:80"
-    volumes:
-      - /www/public
     depends_on:
-      - nodejs
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
+      - node

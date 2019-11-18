@@ -1,27 +1,14 @@
-# ---- Базовый Node ----
-FROM node:carbon AS base
-# Создать директорию app
-WORKDIR /app
+#--------------------------------------STAGE 1-----------------------------
 
-# ---- Зависимости ----
-FROM base AS dependencies
-COPY package*.json ./
-COPY yarn.lock ./
-RUN yarn
-
-# ---- Скопировать файлы/билд ----
-FROM dependencies AS build
+FROM node:alpine AS nodeServer
+CMD [ "yarn","start" ]
 WORKDIR /app
 COPY . .
-RUN npm rebuild node-sass && yarn build --scripts-prepend-node-path
+RUN yarn install --force && yarn build --scripts-prepend-node-path --only=production --ignore-optional
 
-# --- Выпуск, используя Alpine ----
-FROM node:alpine AS release
-WORKDIR /app
-COPY --from=dependencies /app/package.json ./
-#USER node
-RUN yarn --only=production --ignore-optional
-COPY --from=build /app ./
-#COPY --chown=node:node . .
+#--------------------------------------STAGE 2-----------------------------
 
-CMD [ "node","start" ]
+FROM nginx:alpine AS webServer
+WORKDIR /app/
+COPY --from=nodeServer /app/dist/ /app/public/
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
