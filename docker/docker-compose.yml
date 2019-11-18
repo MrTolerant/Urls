@@ -4,6 +4,9 @@ services:
     image: nodejs
     volumes:
       - "./app:/src/app"
+    ports:
+      - "3000"
+
     build:
       context: ../
       dockerfile: docker/Dockerfile
