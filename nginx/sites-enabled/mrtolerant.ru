@@ -1,13 +1,13 @@
 upstream backend {
 server nodejs:3000;
 }
-
+proxy_cache_path /data/nginx/cache keys_zone=one:10m;
 server {
 listen 80;
 server_name mrtolerant.ru;
 
 root /var/tools/public;
-
+proxy_cache mycache;
 location / {
 try_files $uri @backend;
 }
