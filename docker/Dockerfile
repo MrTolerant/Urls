@@ -13,7 +13,7 @@ RUN yarn install
 FROM dependencies AS build
 WORKDIR /app
 COPY . .
-RUN npm rebuild node-sass && yarn run build
+RUN npm rebuild node-sass && yarn run build --scripts-prepend-node-path
 
 # --- Выпуск, используя Alpine ----
 FROM node:alpine AS release
