@@ -2,50 +2,30 @@ version: "3.3"
 services:
   nodejs:
     image: nodejs
+    volumes:
+      - "./app:/src/app"
     build:
       context: ../
       dockerfile: docker/Dockerfile
     container_name: nodejs
     restart: unless-stopped
+    network_mode: host
     networks:
       - app-network
 
   webserver:
+    build: ../nginx/
     image: nginx:mainline-alpine
     container_name: webserver
     restart: unless-stopped
     ports:
       - "80:80"
     volumes:
-      - web-root:/var/www/html
-      - ./nginx-conf:/etc/nginx/conf.d
-      # - certbot-etc:/etc/letsencrypt
-      # - certbot-var:/var/lib/letsencrypt
+      - /www/public
     depends_on:
       - nodejs
     networks:
       - app-network
-
-  # certbot:
-  #   image: certbot/certbot
-  #   container_name: certbot
-  #   volumes:
-  #     # - certbot-etc:/etc/letsencrypt
-  #     # - certbot-var:/var/lib/letsencrypt
-  #     - web-root:/var/www/html
-  #   depends_on:
-  #     - webserver
-  #   # command: certonly --webroot --webroot-path=/var/www/html --email admin@mrtolerant.ru --agree-tos --no-eff-email --staging -d mrtolerant.ru  -d www.mrtolerant.ru
-
-volumes:
-  # certbot-etc:
-  # certbot-var:
-  web-root:
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/gitlab-runner/mrtolerant-ru/views/
-      o: bind
 
 networks:
   app-network:
