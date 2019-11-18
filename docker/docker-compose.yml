@@ -1,9 +1,32 @@
 version: "3.3"
 services:
-  frontend:
-    image: webpack
+  nodejs:
+    image: nodejs
+    volumes:
+      - "./app:/src/app"
     build:
       context: ../
       dockerfile: docker/Dockerfile
+    container_name: nodejs
+    restart: unless-stopped
+    # network_mode: host
+    networks:
+      - app-network
+
+  webserver:
+    build: ../nginx/
+    image: nginx:mainline-alpine
+    container_name: webserver
+    restart: unless-stopped
     ports:
-      - 80:3000
+      - "80:80"
+    volumes:
+      - /www/public
+    depends_on:
+      - nodejs
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
