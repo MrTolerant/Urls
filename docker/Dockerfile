@@ -4,7 +4,7 @@ FROM node:alpine AS nodeServer
 CMD [ "yarn","start" ]
 WORKDIR /app
 COPY . .
-RUN yarn install --scripts-prepend-node-path --force && yarn build --silen --only=production --ignore-optional
+RUN yarn install --scripts-prepend-node-path --force && yarn build --silent --only=production --ignore-optional
 
 #--------------------------------------STAGE 2-----------------------------
 
