@@ -20,17 +20,16 @@ services:
     container_name: nginx
     restart: always
     networks:
-      - review
       - internal
     labels:
-      - traefik.frontend.rule=Host:${REVIEW_HOST}
-      - traefik.docker.network=review
+      - traefik.backend=nginx
+      - traefik.frontend.rule=mrtolerant.ru
+      - traefik.port=80
     depends_on:
       - node
 
 networks:
   internal:
   review:
-    external:
-      name: review
+    external: true
 
