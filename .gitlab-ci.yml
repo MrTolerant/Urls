@@ -1,7 +1,7 @@
 stages:
  - run
 
-Compose UP:
+Compose RUN:
   stage: run
   script:
-    - docker-compose -f docker/docker-compose.yml up -d --build #--force-recreate
+    - docker-compose -f docker/docker-compose.yml up -d --build --remove-orphans #--force-recreate
