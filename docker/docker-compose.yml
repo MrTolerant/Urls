@@ -20,7 +20,7 @@ services:
     container_name: nginx
     restart: always
     networks:
-      - traefik
+      - review
       - internal
     labels:
       - traefik.frontend.rule=Host:mrtolerant.ru
@@ -30,7 +30,7 @@ services:
 
 networks:
   internal:
-  traefik:
+  review:
     external:
-      name: traefik
+      name: review
 
