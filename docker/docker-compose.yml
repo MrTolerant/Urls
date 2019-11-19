@@ -6,13 +6,11 @@ services:
       context: ../
       dockerfile: docker/Dockerfile
     container_name: node
-    restart: unless-stopped
+    restart: always
     networks:
       - internal
     labels:
     - traefik.enable=false
-
-
 
   nginx:
     build:
@@ -20,7 +18,7 @@ services:
       context: ../
       dockerfile: docker/Dockerfile
     container_name: nginx
-    restart: unless-stopped
+    restart: always
     networks:
       - traefik
       - internal
