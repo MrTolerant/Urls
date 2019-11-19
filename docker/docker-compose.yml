@@ -7,6 +7,9 @@ services:
       dockerfile: docker/Dockerfile
     container_name: node
     restart: unless-stopped
+    networks:
+      - review
+
 
   nginx:
     build:
@@ -15,7 +18,15 @@ services:
       dockerfile: docker/Dockerfile
     container_name: nginx
     restart: unless-stopped
+    networks:
+      - review
     ports:
       - "80:80"
     depends_on:
       - node
+
+networks:
+  review:
+    external:
+      name: review
+
