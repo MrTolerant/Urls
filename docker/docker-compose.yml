@@ -8,9 +8,9 @@ services:
     container_name: node
     restart: always
     networks:
-      - internal
+      - review
     labels:
-    - traefik.enable=false
+      - traefik.enable=false
 
   nginx:
     build:
@@ -20,16 +20,15 @@ services:
     container_name: nginx
     restart: always
     networks:
-      - internal
+      - review
     labels:
-      - traefik.backend=nginx
-      - traefik.frontend.rule=mrtolerant.ru
-      - traefik.port=80
+      - "traefik.docker.network=review"
+      - "traefik.basic.frontend.rule=Host:mrtolerant.ru"
+      - "traefik.basic.protocol=http"
     depends_on:
       - node
 
 networks:
-  internal:
   review:
     external: true
 
