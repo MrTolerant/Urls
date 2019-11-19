@@ -22,9 +22,9 @@ services:
     networks:
       - review
     labels:
-      - "traefik.docker.network=review"
-      - "traefik.basic.frontend.rule=Host:mrtolerant.ru"
-      - "traefik.basic.protocol=http"
+      - "traefik.enable=true"
+      - 'traefik.frontend.rule=Host:mrtolerant.ru'
+      - "traefik.port=80"
     depends_on:
       - node
 
