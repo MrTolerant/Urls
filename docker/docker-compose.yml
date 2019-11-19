@@ -8,7 +8,10 @@ services:
     container_name: node
     restart: unless-stopped
     networks:
-      - review
+      - internal
+    labels:
+    - traefik.enable=false
+
 
 
   nginx:
@@ -19,14 +22,17 @@ services:
     container_name: nginx
     restart: unless-stopped
     networks:
-      - review
-    ports:
-      - "80:80"
+      - traefik
+      - internal
+    labels:
+      - traefik.frontend.rule=Host:mrtolerant.ru
+      - traefik.docker.network=traefik
     depends_on:
       - node
 
 networks:
-  review:
+  internal:
+  traefik:
     external:
-      name: review
+      name: traefik
 
