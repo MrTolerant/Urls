@@ -18,11 +18,11 @@ const Index = () => {
             <p>Fullstack Developer &nbsp;&bull;&nbsp; Cyborg &nbsp;&bull;&nbsp; Never asked for this</p>
             <nav>
               <ul>
-                <li><a href="https://twitter.com/MrTolerant" className="icon brands fa-twitter"><span className="label">Twitter</span></a></li>
-                <li><a href="https://www.linkedin.com/in/lebedevpetr/" className="icon brands fa-linkedin"><span className="label">Linkedin</span></a></li>
+                <li><a href="https://twitter.com/MrTolerant" rel="noopener noreferrer" target="_blank" className="icon brands fa-twitter"><span className="label">Twitter</span></a></li>
+                <li><a href="https://www.linkedin.com/in/lebedevpetr/" rel="noopener noreferrer" target="_blank" className="icon brands fa-linkedin"><span className="label">Linkedin</span></a></li>
                 {/* <li><a href="#" className="icon brands fa-dribbble"><span className="label">Dribbble</span></a></li> */}
-                <li><a href="https://github.com/MrTolerant" className="icon brands fa-github"><span className="label">Github</span></a></li>
-                <li><a href="mailto:lebedevpetr@outlook.com" className="icon solid fa-envelope"><span className="label">Email</span></a></li>
+                <li><a href="https://github.com/MrTolerant" rel="noopener noreferrer" target="_blank" className="icon brands fa-github"><span className="label">Github</span></a></li>
+                <li><a href="mailto:lebedevpetr@outlook.com" rel="noopener noreferrer" target="_blank" className="icon solid fa-envelope"><span className="label">Email</span></a></li>
               </ul>
             </nav>
           </header>
