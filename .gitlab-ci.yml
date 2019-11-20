@@ -5,3 +5,5 @@ Compose RUN:
   stage: run
   script:
     - docker-compose -f docker/docker-compose.yml up -d --build --remove-orphans #--force-recreate
+  tags:
+    - mrtolerant

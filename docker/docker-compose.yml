@@ -6,7 +6,11 @@ services:
       context: ../
       dockerfile: docker/Dockerfile
     container_name: node
-    restart: unless-stopped
+    restart: always
+    networks:
+      - review
+    labels:
+      - traefik.enable=false
 
   nginx:
     build:
@@ -14,8 +18,17 @@ services:
       context: ../
       dockerfile: docker/Dockerfile
     container_name: nginx
-    restart: unless-stopped
-    ports:
-      - "80:80"
+    restart: always
+    networks:
+      - review
+    labels:
+      - "traefik.enable=true"
+      - 'traefik.frontend.rule=Host:mrtolerant.ru'
+      - "traefik.port=80"
     depends_on:
       - node
+
+networks:
+  review:
+    external: true
+
