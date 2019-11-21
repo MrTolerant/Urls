@@ -16,8 +16,7 @@ Build:
 Test:
   stage: test
   script:
-    - docker-compose -f docker/docker-compose.yml up -d --build
-    - docker exec -ti node "yarn install && yarn run test"
+    - docker run  --entrypoint '/bin/sh' node -c 'yarn & & yarn test' 
     - docker-compose -f docker/docker-compose.yml down
   tags:
     - bash
