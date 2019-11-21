@@ -1,9 +1,25 @@
 stages:
- - run
+  - test
+  - build
+  - run
 
-Compose RUN:
+Test:
+  stage: test
+  image: node:12.13.0
+  script:
+    - yarn install
+    - yarn run test
+
+Build:
+  stage: build
+  script:
+    - docker-compose -f docker/docker-compose.yml build
+  tags:
+    - mrtolerant
+
+Run:
   stage: run
   script:
-    - docker-compose -f docker/docker-compose.yml up -d --build --remove-orphans #--force-recreate
+    - docker-compose -f docker/docker-compose.yml run
   tags:
     - mrtolerant
