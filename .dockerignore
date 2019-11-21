@@ -1,8 +1,0 @@
-node_modules
-webpack.development.config.js
-npm-debug.log
-.env
-.eslintrc
-.git
-.gitignore
-yarn-error.log
