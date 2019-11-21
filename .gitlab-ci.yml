@@ -17,11 +17,11 @@ Build:
   script:
     - docker-compose -f docker/docker-compose.yml build
   tags:
-    - mrtolerant
+    - bash
 
 Run:
   stage: run
   script:
     - docker-compose -f docker/docker-compose.yml run
   tags:
-    - mrtolerant
+    - bash
