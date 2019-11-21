@@ -5,7 +5,7 @@ stages:
 
 Test:
   stage: test
-  image: node:v12.13.0
+  image: node:latest
   script:
     - yarn install
     - yarn run test
