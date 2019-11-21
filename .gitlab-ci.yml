@@ -11,6 +11,8 @@ Test:
     - yarn run test
   tags:
     - docker
+  only:
+    - merge_requests
 
 Build:
   stage: build
