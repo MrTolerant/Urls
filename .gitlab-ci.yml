@@ -4,7 +4,7 @@ stages:
   - run
 Test:
   stage: test
-  #image: node:latest
+  image: node:v12.13.0
   script:
     - yarn install
     - yarn run test
