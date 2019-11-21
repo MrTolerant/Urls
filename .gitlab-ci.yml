@@ -22,6 +22,6 @@ Build:
 Run:
   stage: run
   script:
-    - docker-compose -f docker/docker-compose.yml run
+    - docker-compose -f docker/docker-compose.yml up -d --remove-orphans #--force-recreate
   tags:
     - bash
