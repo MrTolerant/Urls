@@ -2,14 +2,14 @@ stages:
   - test
   - build
   - run
-Test:
-  stage: test
-  image: node:v12.13.0
-  script:
-    - yarn install
-    - yarn run test
-  tags:
-    - docker
+# Test:
+#   stage: test
+#   image: node:v12.13.0
+#   script:
+#     - yarn install
+#     - yarn run test
+#   tags:
+#     - docker
 
 
 Build:
