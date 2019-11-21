@@ -3,7 +3,7 @@ variables:
 
 stages:
   - build
-  - test 
+  - test
   - run
 
 Build:
@@ -12,11 +12,11 @@ Build:
     - docker-compose -f docker/docker-compose.yml build
   tags:
     - bash
-  
+
 Test:
   stage: test
   script:
-    - docker run  --entrypoint '/bin/sh' node -c 'dir && cd /app && yarn test' 
+    - docker run  --entrypoint=/bin/sh docker_node -c 'yarn test'
     - docker stop node
   tags:
     - bash
