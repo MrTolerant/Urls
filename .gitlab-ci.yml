@@ -2,20 +2,9 @@ variables:
     SITE_HOSTNAME: mrtolerant.ru
 
 stages:
-  - test
   - build
+  - test 
   - run
-
-Test:
-  stage: test
-  image: node:latest
-  script:
-    - yarn install
-    - yarn run test
-  tags:
-    - docker
-  only:
-    - merge_requests
 
 Build:
   stage: build
@@ -23,6 +12,19 @@ Build:
     - docker-compose -f docker/docker-compose.yml build
   tags:
     - bash
+  
+Test:
+  stage: test
+  script:
+    - docker-compose -f docker/docker-compose.yml up -d
+    - docker exec -ti node "yarn install && yarn run test"
+    - docker-compose -f docker/docker-compose.yml down
+  tags:
+    - bash
+  only:
+    - merge_requests
+
+
 
 Run:
   stage: run
