@@ -1,14 +1,12 @@
-image: node:latest
-stages:
-  - test
-  - build
-  - run
-
 Test:
   stage: test
+  #image: node:latest
   script:
-    - npm install
-    - npm run test
+    - yarn install
+    - yarn run test
+  tags:
+    - docker
+
 
 Build:
   stage: build
