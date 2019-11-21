@@ -1,3 +1,4 @@
+image: node:latest
 stages:
   - test
   - build
@@ -5,7 +6,6 @@ stages:
 
 Test:
   stage: test
-  image: node:12.13.0
   script:
     - npm install
     - npm run test
