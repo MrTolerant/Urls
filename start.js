@@ -9,7 +9,6 @@ require('@babel/register')({
     '@babel/react',
     '@babel/typescript'
   ],
-
   'plugins': [
     'react-hot-loader/babel',
     '@babel/plugin-proposal-export-default-from',
