@@ -3,8 +3,10 @@
 FROM node:alpine AS nodeServer
 CMD [ "yarn","start" ]
 WORKDIR /app
+COPY package*.json ./
+RUN node install --scripts-prepend-node-path --force
 COPY . .
-RUN yarn install --scripts-prepend-node-path --force && yarn build --silent --only=production --ignore-optional
+RUN node build --silent --only=production --ignore-optional
 
 #--------------------------------------STAGE 2-----------------------------
 

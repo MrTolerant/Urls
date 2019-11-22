@@ -7,6 +7,8 @@ stages:
 Build:
   stage: build
   script:
+    - echo ${PROJECT_PREFIX}
+    - echo ${CI_COMMIT_REF_SLUG}
     - docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG}_${PROJECT_PREFIX} build
   tags:
     - bash
