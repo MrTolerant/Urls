@@ -1,5 +1,5 @@
 variables:
-  PROJECT_PREFIX: 'mrtolerant.ru'
+  PROJECT_PREFIX: "mrtolerant.ru"
 
   stages:
   - build
