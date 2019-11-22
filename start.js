@@ -9,6 +9,10 @@ require('@babel/register')({
     '@babel/react',
     '@babel/typescript'
   ],
+<<<<<<< HEAD
+=======
+sdfsdfsdfsdfsdf
+>>>>>>> 5414ac05978ab1257f1bdf9808394accc6ba2517
   'plugins': [
     'react-hot-loader/babel',
     '@babel/plugin-proposal-export-default-from',

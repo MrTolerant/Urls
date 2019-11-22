@@ -1,27 +1,31 @@
-stages:
-  - test
-  - build
-  - run
-Test:
-  stage: test
-  #image: node:latest
-  script:
-    - yarn install
-    - yarn run test
-  tags:
-    - docker
+variables:
+    SITE_HOSTNAME: mrtolerant.ru
 
+stages:
+  - build
+  - test
+  - run
 
 Build:
   stage: build
   script:
     - docker-compose -f docker/docker-compose.yml build
   tags:
-    - mrtolerant
+    - bash
+
+Test:
+  stage: test
+  script:
+    - docker run  --entrypoint=/bin/sh docker_node -c 'yarn test'
+    - docker stop node
+  tags:
+    - bash
+  # only:
+  #   - merge_requests
 
 Run:
   stage: run
   script:
-    - docker-compose -f docker/docker-compose.yml run
+    - docker run --rm --entrypoint yarn docker_node  start 
   tags:
-    - mrtolerant
+    - bash

@@ -22,9 +22,9 @@ services:
     networks:
       - review
     labels:
-      - "traefik.enable=true"
-      - 'traefik.frontend.rule=Host:mrtolerant.ru'
-      - "traefik.port=80"
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:${SITE_HOSTNAME}
+      - traefik.port=80
     depends_on:
       - node
 
