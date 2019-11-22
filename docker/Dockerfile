@@ -4,7 +4,7 @@ FROM node:alpine AS nodeServer
 CMD [ "yarn","start" ]
 WORKDIR /app
 COPY package*.json ./
-RUN npm install --scripts-prepend-node-path --force
+RUN npm install
 COPY . .
 RUN npm build --silent --only=production --ignore-optional
 
