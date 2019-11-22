@@ -1,5 +1,5 @@
 variables:
-    SITE_HOSTNAME: mrtolerant.ru
+    SITE_HOSTNAME: master.mrtolerant.ru
 
 stages:
   - build

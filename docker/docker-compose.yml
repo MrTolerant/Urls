@@ -5,7 +5,7 @@ services:
       target: nodeServer
       context: ../
       dockerfile: docker/Dockerfile
-    container_name: node
+    container_name: master_node
     restart: always
     networks:
       - review
@@ -17,7 +17,7 @@ services:
       target: webServer
       context: ../
       dockerfile: docker/Dockerfile
-    container_name: nginx
+    container_name: master_nginx
     restart: always
     networks:
       - review
