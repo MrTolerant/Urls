@@ -17,7 +17,7 @@ Test:
   stage: test
   script:
     - docker run  --entrypoint=/bin/sh docker_node -c 'yarn test'
-    - docker kill node
+    # - docker kill node
   tags:
     - bash
   # only:
