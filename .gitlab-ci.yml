@@ -17,11 +17,10 @@ Test:
   stage: test
   script:
     - docker run  --entrypoint=/bin/sh docker_node -c 'yarn test'
-    # - docker kill node
   tags:
     - bash
-  # only:
-  #   - merge_requests
+  only:
+    - merge_requests
 
 Run:
   stage: run
