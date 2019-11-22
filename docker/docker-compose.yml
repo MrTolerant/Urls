@@ -5,7 +5,7 @@ services:
       target: nodeServer
       context: ../
       dockerfile: docker/Dockerfile
-    container_name: dev_node
+    # container_name: dev_node
     restart: always
     networks:
       - review
@@ -17,13 +17,13 @@ services:
       target: webServer
       context: ../
       dockerfile: docker/Dockerfile
-    container_name: dev_nginx
+    # container_name: dev_nginx
     restart: always
     networks:
       - review
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:${SITE_HOSTNAME}
+      - traefik.frontend.rule=Host:${SITE_HOSTNAM}
       - traefik.port=80
     depends_on:
       - node

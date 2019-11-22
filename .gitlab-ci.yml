@@ -1,5 +1,6 @@
 variables:
-    SITE_HOSTNAME: dev.mrtolerant.ru
+  PROJECT_PREFIX: mrtolerant
+  SITE_HOSTNAME: dev.mrtolerant.ru
 
 stages:
   - build
@@ -9,22 +10,22 @@ stages:
 Build:
   stage: build
   script:
-    - docker-compose -f docker/docker-compose.yml build
+    - docker-compose -f docker/docker-compose.yml -p ${PROJECT_PREFIX}_${CI_COMMIT_REF_SLUG} build
   tags:
     - bash
 
-Test:
-  stage: test
-  script:
-    - docker run  --entrypoint=/bin/sh docker_node -c 'yarn test'
-  tags:
-    - bash
-  only:
-    - merge_requests
+# Test:
+#   stage: test
+#   script:
+#     - docker run  --entrypoint=/bin/sh docker_node -c 'yarn test'
+#   tags:
+#     - bash
+#   only:
+#     - merge_requests
 
 Run:
   stage: run
   script:
-    docker-compose -f docker/docker-compose.yml up -d
+    docker-compose -f docker/docker-compose.yml -p ${PROJECT_PREFIX}_${CI_COMMIT_REF_SLUG}  up -d
   tags:
     - bash
