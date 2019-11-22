@@ -9,9 +9,13 @@ stages:
 Build:
   stage: build
   script:
-    - docker-compose -f docker/docker-compose.yml -p ${PROJECT_PREFIX}.${CI_COMMIT_REF_SLUG} build
+    - docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG}_${PROJECT_PREFIX} build
   tags:
     - bash
+  only:
+    - develop
+    - master
+
 
 # Test:
 #   stage: test
@@ -25,6 +29,9 @@ Build:
 Run:
   stage: run
   script:
-    docker-compose -f docker/docker-compose.yml -p ${PROJECT_PREFIX}.${CI_COMMIT_REF_SLUG}  up -d
+    docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG}_${PROJECT_PREFIX}  up -d
   tags:
     - bash
+  only:
+    - develop
+    - master

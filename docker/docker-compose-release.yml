@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  node:
+    build:
+      target: nodeServer
+      context: ../
+      dockerfile: docker/Dockerfile
+    restart: always
+    networks:
+      - review
+    labels:
+      - traefik.enable=false
+
+  nginx:
+    build:
+      target: webServer
+      context: ../
+      dockerfile: docker/Dockerfile
+    restart: always
+    networks:
+      - review
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:${CI_COMMIT_REF_SLUG}.${PROJECT_PREFIX}
+      - traefik.port=80
+    depends_on:
+      - node
+
+networks:
+  review:
+    external: true
