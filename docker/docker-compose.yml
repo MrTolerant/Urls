@@ -23,7 +23,7 @@ services:
       - review
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:${SITE_HOSTNAM}
+      - traefik.frontend.rule=Host:${CI_COMMIT_REF_SLUG}.${PROJECT_PREFIX}
       - traefik.port=80
     depends_on:
       - node
