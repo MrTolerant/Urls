@@ -1,10 +1,11 @@
 variables:
-  PROJECT_PREFIX: mrtolerant.ru
+  PROJECT_PREFIX: 'mrtolerant.ru'
 
 stages:
   - build
   - test
   - run
+  - prod
 
 Build:
   stage: build
@@ -35,3 +36,13 @@ Run:
   only:
     - develop
     - master
+
+prod:
+  stage: prod
+  script:
+    docker-compose -f docker/docker-compose-prod.yml -p ${CI_COMMIT_REF_SLUG}_${PROJECT_PREFIX}  up -d
+  tags:
+    - bash
+  only:
+    - production
+
