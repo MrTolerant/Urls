@@ -23,11 +23,10 @@ Test:
   # only:
   #   - merge_requests
 
-
-
 Run:
   stage: run
   script:
-    - docker-compose -f docker/docker-compose.yml up -d --remove-orphans #--force-recreate
+    - docker-compose -f docker/docker-compose.yml up -d  #--force-recreate
+    - docker-compose  exec -d docker_node "yarn start"
   tags:
     - bash
