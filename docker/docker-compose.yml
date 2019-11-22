@@ -5,10 +5,9 @@ services:
       target: nodeServer
       context: ../
       dockerfile: docker/Dockerfile
-    # container_name: dev_node
     restart: always
     networks:
-      - review
+      - local
     labels:
       - traefik.enable=false
 
@@ -17,9 +16,9 @@ services:
       target: webServer
       context: ../
       dockerfile: docker/Dockerfile
-    # container_name: dev_nginx
     restart: always
     networks:
+      - local
       - review
     labels:
       - traefik.enable=true
@@ -29,6 +28,7 @@ services:
       - node
 
 networks:
+  local:
   review:
     external: true
 
