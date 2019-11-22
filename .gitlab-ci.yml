@@ -27,6 +27,6 @@ Run:
   stage: run
   script:
     - docker-compose -f docker/docker-compose.yml up -d  #--force-recreate
-    - docker-compose  exec -d docker_node "yarn start"
+    # - docker exec -d docker_node "yarn start"
   tags:
     - bash
