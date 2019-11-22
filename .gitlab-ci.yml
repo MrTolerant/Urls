@@ -1,5 +1,5 @@
 variables:
-  PROJECT_PREFIX: "mrtolerant.ru"
+  PROJECT_PREFIX: mrtolerant.ru
 
 stages:
   - build
@@ -9,7 +9,7 @@ stages:
 Build:
   stage: build
   script:
-    - docker-compose -f docker/docker-compose.yml -p '${PROJECT_PREFIX}.${CI_COMMIT_REF_SLUG}' build
+    - docker-compose -f docker/docker-compose.yml -p ${PROJECT_PREFIX}.${CI_COMMIT_REF_SLUG} build
   tags:
     - bash
 
@@ -25,6 +25,6 @@ Build:
 Run:
   stage: run
   script:
-    docker-compose -f docker/docker-compose.yml -p '${PROJECT_PREFIX}.${CI_COMMIT_REF_SLUG}'  up -d
+    docker-compose -f docker/docker-compose.yml -p ${PROJECT_PREFIX}.${CI_COMMIT_REF_SLUG}  up -d
   tags:
     - bash
