@@ -4,9 +4,9 @@ FROM node:alpine AS nodeServer
 CMD [ "yarn","start" ]
 WORKDIR /app
 COPY package*.json ./
-RUN node install --scripts-prepend-node-path --force
+RUN npm install --scripts-prepend-node-path --force
 COPY . .
-RUN node build --silent --only=production --ignore-optional
+RUN npm build --silent --only=production --ignore-optional
 
 #--------------------------------------STAGE 2-----------------------------
 
