@@ -1,6 +1,3 @@
-environment:
-  PROJECT_PREFIX: 'mrtolerant.ru'
-
 stages:
   - build
   - test
