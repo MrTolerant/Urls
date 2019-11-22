@@ -17,7 +17,7 @@ Test:
   stage: test
   script:
     - docker run  --entrypoint=/bin/sh docker_node -c 'yarn test'
-    - docker stop node
+    - docker kill node
   tags:
     - bash
   # only:
@@ -26,6 +26,6 @@ Test:
 Run:
   stage: run
   script:
-    - docker run --rm --entrypoint yarn docker_node  start 
+    docker-compose -f docker/docker-compose.yml up -d
   tags:
     - bash
