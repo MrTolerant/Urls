@@ -1,7 +1,7 @@
 variables:
   PROJECT_PREFIX: "mrtolerant.ru"
 
-  stages:
+stages:
   - build
   - test
   - run
