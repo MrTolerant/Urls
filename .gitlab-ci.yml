@@ -1,5 +1,6 @@
 variables:
     REVIEW_HOST: ${CI_COMMIT_REF_SLUG}.${PROJECT_PREFIX}
+    DOCKER_NODE: ${CI_COMMIT_REF_SLUG}_node_1
 
 stages:
   - build
@@ -20,7 +21,7 @@ Build:
 Test:
   stage: test
   script:
-    - docker run  --entrypoint=/bin/sh docker_node -c 'yarn test'
+    - docker run  --entrypoint=/bin/sh ${DOCKER_NODE} -c 'yarn test'
   tags:
     - bash
   only:
