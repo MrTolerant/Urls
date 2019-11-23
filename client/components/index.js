@@ -16,7 +16,7 @@ const Index = () => {
           <header id="header">
             {firefly}
             <h1>Petr Lebedev</h1>
-            <p>Fullstack Developer &nbsp;&bull;&nbsp; Cyborg &nbsp;&bull;&nbsp; Never asked for this</p>
+            <p>Fullstack Developer &nbsp;&bull;&nbsp; Cyborg &nbsp;&bull;&nbsp; Never sleep</p>
             <nav>
               <ul>
                 <li><a href="https://twitter.com/MrTolerant" rel="noopener noreferrer" target="_blank" className="icon brands fa-twitter"><span className="label">Twitter</span></a></li>
