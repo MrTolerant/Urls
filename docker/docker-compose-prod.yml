@@ -7,7 +7,7 @@ services:
       dockerfile: docker/Dockerfile
     restart: always
     networks:
-      - local
+      - internal
     labels:
       - traefik.enable=false
 
@@ -18,7 +18,7 @@ services:
       dockerfile: docker/Dockerfile
     restart: always
     networks:
-      - local
+      - internal
       - review
     labels:
       - traefik.enable=true
