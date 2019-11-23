@@ -1,3 +1,6 @@
+variables:
+    REVIEW_HOST: ${CI_COMMIT_REF_SLUG}.${PROJECT_PREFIX}
+
 stages:
   - build
   - test
@@ -7,9 +10,10 @@ stages:
 Build:
   stage: build
   script:
+    - echo ${REVIEW_HOST}
     - echo ${PROJECT_PREFIX}
     - echo ${CI_COMMIT_REF_SLUG}
-    - docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG}_${PROJECT_PREFIX} build
+    - docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG} build
   tags:
     - bash
   only:
@@ -28,7 +32,7 @@ Build:
 Run:
   stage: run
   script:
-    docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG}_${PROJECT_PREFIX}  up -d
+    docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG}  up -d
   tags:
     - bash
   only:
@@ -38,7 +42,7 @@ Run:
 Prod:
   stage: prod
   script:
-    docker-compose -f docker/docker-compose-prod.yml -p ${CI_COMMIT_REF_SLUG}_${PROJECT_PREFIX}  up -d --build
+    docker-compose -f docker/docker-compose-prod.yml -p ${CI_COMMIT_REF_SLUG}  up -d --build
   tags:
     - bash
   only:

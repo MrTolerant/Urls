@@ -7,7 +7,7 @@ services:
       dockerfile: docker/Dockerfile
     restart: always
     networks:
-      - review
+      - local
     labels:
       - traefik.enable=false
 
@@ -18,14 +18,17 @@ services:
       dockerfile: docker/Dockerfile
     restart: always
     networks:
+      - local
       - review
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:${CI_COMMIT_REF_SLUG}.${PROJECT_PREFIX}
+      - traefik.frontend.rule=Host:${REVIEW_HOST}
       - traefik.port=80
     depends_on:
       - node
 
 networks:
+  internal:
   review:
-    external: true
+    external:
+      name: review
