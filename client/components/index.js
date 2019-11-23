@@ -5,15 +5,16 @@ import { bindActionCreators } from 'redux'
 import Head from './head'
 
 const Index = () => {
+  const firefly = new Array(15).fill(<div className="firefly" />)
   return (
     <div>
       <Head title="MrTolerant" />
       <div id="wrapper">
-        <div id="bg" />
+        <div id="bg" className="bg" />
         <div id="overlay" />
         <div id="main">
-
           <header id="header">
+            {firefly}
             <h1>Petr Lebedev</h1>
             <p>Fullstack Developer &nbsp;&bull;&nbsp; Cyborg &nbsp;&bull;&nbsp; Never asked for this</p>
             <nav>
