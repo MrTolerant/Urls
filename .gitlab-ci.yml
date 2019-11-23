@@ -13,18 +13,18 @@ Build:
     - docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG} build
   tags:
     - bash
-  only:
-    - develop
-    - master
+  # only:
+  #   - develop
+  #   - master
 
-# Test:
-#   stage: test
-#   script:
-#     - docker run  --entrypoint=/bin/sh docker_node -c 'yarn test'
-#   tags:
-#     - bash
-#   only:
-#     - merge_requests
+Test:
+  stage: test
+  script:
+    - docker run  --entrypoint=/bin/sh docker_node -c 'yarn test'
+  tags:
+    - bash
+  only:
+    - merge_requests
 
 Run:
   stage: run
@@ -32,16 +32,16 @@ Run:
     docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG}  up -d
   tags:
     - bash
-  only:
-    - develop
-    - master
+  # only:
+  #   - develop
+  #   - master
 
-Prod:
-  stage: prod
-  script:
-    docker-compose -f docker/docker-compose-prod.yml -p ${CI_COMMIT_REF_SLUG}  up -d --build
-  tags:
-    - bash
-  only:
-    - production
+# Prod:
+#   stage: prod
+#   script:
+#     docker-compose -f docker/docker-compose-prod.yml -p ${CI_COMMIT_REF_SLUG}  up -d --build
+#   tags:
+#     - bash
+#   only:
+#     - production
 
