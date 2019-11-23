@@ -11,7 +11,6 @@ const Index = () => {
       <Head title="MrTolerant" />
       <div id="wrapper">
         <div id="bg" className="bg" />
-        <div id="overlay" />
         <div id="main">
           <header id="header">
             {firefly}
