@@ -1,6 +1,6 @@
 variables:
     REVIEW_HOST: ${CI_COMMIT_REF_SLUG}.${PROJECT_PREFIX}
-    DOCKER_NODE: ${CI_COMMIT_REF_SLUG}_node_1
+    DOCKER_NODE: ${CI_COMMIT_REF_SLUG}_node
 
 stages:
   - build
