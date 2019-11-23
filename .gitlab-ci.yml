@@ -14,9 +14,9 @@ Build:
     - docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG} build
   tags:
     - bash
-  # only:
-  #   - develop
-  #   - master
+  only:
+    - develop
+    - master
 
 Test:
   stage: test
@@ -33,16 +33,15 @@ Run:
     docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG}  up -d
   tags:
     - bash
-  # only:
-  #   - develop
-  #   - master
+  only:
+    - develop
+    - master
 
-# Prod:
-#   stage: prod
-#   script:
-#     docker-compose -f docker/docker-compose-prod.yml -p ${CI_COMMIT_REF_SLUG}  up -d --build
-#   tags:
-#     - bash
-#   only:
-#     - production
-
+Prod:
+  stage: prod
+  script:
+    docker-compose --build -f docker/docker-compose-production.yml -p ${CI_COMMIT_REF_SLUG}  up -d 
+  tags:
+    - bash
+  only:
+    - production
