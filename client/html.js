@@ -7,6 +7,7 @@ const Html = ({
     <head class="is-preload">
       <meta charset="UTF-8">
       <title>MrTolerant</title>
+      <link rel="icon" href="/images/favicon.png">
       <link rel="stylesheet" type="text/css" href="/css/main.css" />
       <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     </head>
