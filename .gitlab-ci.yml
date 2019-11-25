@@ -2,10 +2,19 @@ variables:
     REVIEW_HOST: ${CI_COMMIT_REF_SLUG}.${PROJECT_PREFIX}
     DOCKER_NODE: ${CI_COMMIT_REF_SLUG}_mrtolerantru_node
 stages:
-  - build
   - test
+  - build
   - run
   - prod
+
+Test:
+  stage: test
+  script:
+    - docker run  --entrypoint=/bin/sh ${DOCKER_NODE} - -c 'yarn test'
+  tags:
+    - bash
+  only:
+    - merge_requests
 
 Build:
   stage: build
@@ -16,15 +25,6 @@ Build:
   only:
     - develop
     - master
-
-Test:
-  stage: test
-  script:
-    - docker run  --entrypoint=/bin/sh ${DOCKER_NODE} -c 'yarn test'
-  tags:
-    - bash
-  only:
-    - merge_requests
 
 Run:
   stage: run
