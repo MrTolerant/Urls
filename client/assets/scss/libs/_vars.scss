@@ -26,12 +26,12 @@
 // Palette.
 	$palette: (
 		bg:					#fff,
-		fg:					#fff,
+		fg:					rgba(255,255,255,0.5),
 
 		nav-icon: (
 			hover-bg:		rgba(255,255,255,0.175),
-			hover-fg:		#fff,
+			hover-fg:		rgba(255,255,255,0.5),
 			active-bg:		rgba(255,255,255,0.35),
-			active-fg:		#fff
+			active-fg:		rgba(255,255,255,0.5)
 		)
 	);
