@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import Head from './head'
 
 const Index = () => {
-  const firefly = new Array(15).fill(<div className="firefly" />)
+  const firefly = new Array(20).fill(<div className="firefly" />)
   return (
     <div>
       <Head title="MrTolerant" />
