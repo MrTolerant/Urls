@@ -11,7 +11,7 @@ Test:
   stage: test
   script:
     - docker-compose -f docker/docker-compose.yml build
-    - docker-compose -f docker/docker-compose.yml run  --entrypoint=/bin/sh -c 'yarn test'
+    - docker-compose -f docker/docker-compose.yml run --entrypoint="yarn test"
     - docker-compose -f docker/docker-compose.yml down -rmi all
 
   tags:
