@@ -1,6 +1,6 @@
 variables:
     REVIEW_HOST: ${CI_COMMIT_REF_SLUG}.${PROJECT_PREFIX}
-    DOCKER_NODE: ${CI_COMMIT_REF_SLUG}_mrtolerantru_node
+    DOCKER_NODE: TEST_mrtolerantru_node
 stages:
   - test
   - build
@@ -10,11 +10,14 @@ stages:
 Test:
   stage: test
   script:
-    - docker run  --entrypoint=/bin/sh ${DOCKER_NODE} - -c 'yarn test'
+    - docker-compose -f docker/docker-compose.yml build -p TEST_${PROJECT_PREFIX} 
+    - docker-compose -f docker/docker-compose.yml run  --entrypoint=/bin/sh -c 'yarn test'
+    - docker-compose -f docker/docker-compose.yml down -rmi all
+
   tags:
     - bash
-  only:
-    - merge_requests
+  # only:
+  #   - merge_requests
 
 Build:
   stage: build
