@@ -10,9 +10,8 @@ stages:
 Test:
   stage: test
   script:
-    - docker-compose -f docker/docker-compose.yml build
+    - docker-compose -f docker/docker-compose.yml build --compress --parallel 
     - docker-compose -f docker/docker-compose.yml run node yarn test
-    - docker-compose -f docker/docker-compose.yml down -rmi all
 
   tags:
     - bash
