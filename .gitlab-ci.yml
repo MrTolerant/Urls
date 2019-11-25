@@ -3,7 +3,6 @@ variables:
     DOCKER_NODE: TEST_mrtolerantru_node
 stages:
   - test
-  - build
   - run
   - prod
 
@@ -18,20 +17,10 @@ Test:
   only:
     - merge_requests
 
-Build:
-  stage: build
-  script:
-    - docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG}_${PROJECT_PREFIX} build
-  tags:
-    - bash
-  only:
-    - develop
-    - master
-
-Run:
+Build&Run:
   stage: run
   script:
-    docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG}_${PROJECT_PREFIX}  up -d
+    - docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG}_${PROJECT_PREFIX}  up -d --build 
   tags:
     - bash
   only:
@@ -41,7 +30,7 @@ Run:
 Prod:
   stage: prod
   script:
-    docker-compose -f docker/docker-compose-production.yml -p ${CI_COMMIT_REF_SLUG}  up -d --build 
+    docker-compose -f docker/docker-compose-production.yml -p ${CI_COMMIT_REF_SLUG}_${PROJECT_PREFIX}  up -d --build 
   tags:
     - bash
   only:
