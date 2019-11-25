@@ -22,7 +22,7 @@ services:
       - review
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:${REVIEW_HOST}
+      - traefik.frontend.rule=Host:${PROJECT_PREFIX}
       - traefik.port=80
       - traefik.docker.network=review
     depends_on:

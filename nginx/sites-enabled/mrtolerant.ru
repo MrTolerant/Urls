@@ -1,10 +1,10 @@
 upstream backend {
-  server node:3000;
+  server master_node:3000;
 }
 proxy_cache_path /data/nginx/cache keys_zone=one:10m;
 server {
   listen 80;
-  server_name mrtolerant.ru;
+  server_name master.mrtolerant.ru;
 
   root /app/public;
   proxy_cache mycache;

@@ -5,17 +5,17 @@ import { bindActionCreators } from 'redux'
 import Head from './head'
 
 const Index = () => {
+  const firefly = new Array(15).fill(<div className="firefly" />)
   return (
     <div>
       <Head title="MrTolerant" />
       <div id="wrapper">
-        <div id="bg" />
-        <div id="overlay" />
+        <div id="bg" className="bg" />
         <div id="main">
-
           <header id="header">
+            {firefly}
             <h1>Petr Lebedev</h1>
-            <p>Fullstack Developer &nbsp;&bull;&nbsp; Cyborg &nbsp;&bull;&nbsp; Never asked for this</p>
+            <p>Fullstack Developer &nbsp;&bull;&nbsp; Cyborg &nbsp;&bull;&nbsp; Never sleep</p>
             <nav>
               <ul>
                 <li><a href="https://twitter.com/MrTolerant" rel="noopener noreferrer" target="_blank" className="icon brands fa-twitter"><span className="label">Twitter</span></a></li>
