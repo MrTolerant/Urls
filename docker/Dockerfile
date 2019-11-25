@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm config set scripts-prepend-node-path true && yarn install
 COPY . .
-RUN yarn build --scripts-prepend-node-path --silent --only=production --ignore-optional
+RUN yarn build --silent --only=production --ignore-optional
 #--------------------------------------STAGE 2-----------------------------
 FROM nginx:alpine AS webServer
 WORKDIR /app/
