@@ -1,7 +1,6 @@
 variables:
     REVIEW_HOST: ${CI_COMMIT_REF_SLUG}.${PROJECT_PREFIX}
-    DOCKER_NODE: ${CI_COMMIT_REF_SLUG}_node
-
+    DOCKER_NODE: ${CI_COMMIT_REF_SLUG}_mrtolerantru_node
 stages:
   - build
   - test
@@ -11,7 +10,7 @@ stages:
 Build:
   stage: build
   script:
-    - docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG} build
+    - docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG}_${PROJECT_PREFIX} build
   tags:
     - bash
   only:
@@ -30,7 +29,7 @@ Test:
 Run:
   stage: run
   script:
-    docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG}  up -d
+    docker-compose -f docker/docker-compose.yml -p ${CI_COMMIT_REF_SLUG}_${PROJECT_PREFIX}  up -d
   tags:
     - bash
   only:
