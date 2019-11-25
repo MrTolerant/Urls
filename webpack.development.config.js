@@ -188,7 +188,6 @@ const config = {
     new CopyWebpackPlugin([{ from: 'assets/images', to: 'images' }]),
     new CopyWebpackPlugin([{ from: 'assets/fonts', to: 'fonts' }]),
     new CopyWebpackPlugin([{ from: 'index.html', to: 'index.html' }]),
-    new CopyWebpackPlugin([{ from: 'assets/js', to: 'js' }]),
     new CopyWebpackPlugin([{ from: 'vendors', to: 'vendors' }]),
     new CopyWebpackPlugin([{ from: 'assets/manifest.json', to: 'manifest.json' }]),
     new WebpackShellPlugin({ onBuildEnd: ['npm run watch:server'] }),
