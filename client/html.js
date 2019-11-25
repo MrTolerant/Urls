@@ -3,7 +3,7 @@ const Html = ({
 }) => {
   return `
   <!DOCTYPE html>
-  <html>
+  <html prefix="og: //ogp.me/ns#">
     <head class="is-preload">
       <meta charset="UTF-8">
       <title>MrTolerant</title>
