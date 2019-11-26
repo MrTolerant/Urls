@@ -340,20 +340,24 @@
 
 				&:hover {
 					font-size: 1.1em;
+					text-decoration: none;
 
 					&:before {
 						background-color: _palette(nav-icon, hover-bg);
-						color: _palette(nav-icon, hover-fg);
+						color: _palette(nav-icon, hover-fg );
+						text-decoration: none;
 					}
 				}
 
 				&:active {
 					font-size: 0.95em;
 					background: none;
+					text-decoration: none;
 
 					&:before {
 						background-color: _palette(nav-icon, active-bg);
 						color: _palette(nav-icon, active-fg);
+						text-decoration: none;
 					}
 				}
 
