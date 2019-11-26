@@ -327,15 +327,15 @@
 				&:before {
 					@include vendor('transition', 'all 0.2s ease-in-out');
 					border-radius: 100%;
-					border: solid 1px _palette(fg);
+					// border: solid 1px _palette(fg);
 					display: block;
 					font-size: _size(nav-icon);
-					height: 2.5em;
-					line-height: 2.5em;
+					height: 0; // 2.5em
+					line-height: 0;
 					position: relative;
 					text-align: center;
 					top: 0;
-					width: 2.5em;
+					width: 0;
 				}
 
 				&:hover {
