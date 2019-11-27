@@ -13,7 +13,7 @@ const Html = ({
       <meta name="og:title" content="Petr Lebedev" />
       <meta name="og:site_name" content="https://mrtolerant.ru/" />
       <meta name="og:description" content="Fullstack Developer  •  Cyborg  •  Never sleep" />
-      <meta name="og:image" content="https://images.unsplash.com/photo-1508830524289-0adcbe822b40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+      <meta name="og:image" content="/images/og_image.jpg"
     </head>
     <body>
       <div id="root">${body}</div>
