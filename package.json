@@ -1,0 +1,32 @@
+{
+  "name": "urls",
+  "version": "1.0.0",
+  "description": "Url shortener",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrTolerant/Urls.git"
+  },
+  "keywords": [
+    "mern",
+    "react"
+  ],
+  "author": "Petr Lebedev <lebedevpetr@outlook.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrTolerant/Urls/issues"
+  },
+  "homepage": "https://github.com/MrTolerant/Urls#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongose": "^0.0.2-security"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.2"
+  }
+}
