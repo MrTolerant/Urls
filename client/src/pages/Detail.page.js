@@ -28,8 +28,8 @@ export const DetailPage = () => {
     return <Loader />
   }
   return (
-    <div className="flex-row min-h-full">
-      <div className="flex flex-col">{!loading && link && <LinkCard link={link} />}</div>
+    <div className="flex flex-row min-h-screen">
+      <div className="flex flex-col m-auto">{!loading && link && <LinkCard link={link} />}</div>
     </div>
   )
 }
