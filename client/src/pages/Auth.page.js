@@ -26,7 +26,6 @@ export const AuthPage = () => {
       console.log('DATA', data)
     } catch (e) {
       console.log(e.message)
-      console.log(error)
     }
   }
   return (

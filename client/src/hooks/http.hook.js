@@ -11,10 +11,9 @@ export const useHttp = () => {
         headers['Content-type'] = 'application/json'
       }
       const response = await fetch(url, { method, body, headers })
-      const data = await response.json
-      console.log('data', data)
+      const data = await response.json()
       if (!response.ok) {
-        throw new Error(data.message || 'ERROR UNKNOWN')
+        throw new Error(data.message || 'Something goes wrong')
       }
       setLoading(false)
       return data
