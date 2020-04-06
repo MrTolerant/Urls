@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useHttp } from '../hooks/http.hook'
 import { useMessage } from '../hooks/message.hook'
+import { AuthContext } from '../context/AuthContext'
 
 export const AuthPage = () => {
+  const auth = useContext(AuthContext)
   const message = useMessage()
   const { loading, error, request, clearError } = useHttp()
   const [form, setForm] = useState({
@@ -22,8 +24,16 @@ export const AuthPage = () => {
   const registerHandler = async () => {
     try {
       const data = await request('/api/auth/register', 'POST', { ...form })
+      message(data.message)
+    } catch (e) {
+      console.log(e.message)
+    }
+  }
 
-      console.log('DATA', data)
+  const loginHandler = async () => {
+    try {
+      const data = await request('/api/auth/login', 'POST', { ...form })
+      auth.login(data.token, data.userId)
     } catch (e) {
       console.log(e.message)
     }
@@ -62,13 +72,16 @@ export const AuthPage = () => {
               id="password"
               name="password"
               onChange={changeHandler}
-              disabled={loading}
               type="password"
               autoFocus
             />
           </div>
           <div className="flex justify-between">
-            <button className="shadow-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded focus:outline-none">
+            <button
+              disabled={loading}
+              onClick={loginHandler}
+              className="shadow-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded focus:outline-none"
+            >
               Login
             </button>
             <button
