@@ -57,6 +57,7 @@ export const AuthPage = () => {
               onChange={changeHandler}
               name="email"
               type="text"
+              value={form.email}
               autoFocus
             />
           </div>
@@ -73,6 +74,7 @@ export const AuthPage = () => {
               name="password"
               onChange={changeHandler}
               type="password"
+              value={form.password}
               autoFocus
             />
           </div>
