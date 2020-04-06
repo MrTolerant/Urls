@@ -1,20 +1,33 @@
-import React, { useState } from 'react'
-import useHttp from '../hooks/http.hook'
+import React, { useState, useEffect } from 'react'
+import { useHttp } from '../hooks/http.hook'
+import { useMessage } from '../hooks/message.hook'
+
 export const AuthPage = () => {
-  const { loading, error, request } = useHttp()
+  const message = useMessage()
+  const { loading, error, request, clearError } = useHttp()
   const [form, setForm] = useState({
     email: '',
     password: ''
   })
-  const changeHandler = (event) => {
-    setForm({ ...form, [event.target.name]: event.target.value })
+
+  useEffect(() => {
+    message(error)
+    clearError()
+  }, [error, message, clearError])
+
+  const changeHandler = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value })
   }
 
   const registerHandler = async () => {
     try {
       const data = await request('/api/auth/register', 'POST', { ...form })
+
       console.log('DATA', data)
-    } catch (error) {}
+    } catch (e) {
+      console.log(e.message)
+      console.log(error)
+    }
   }
   return (
     <div className="flex flex-row h-screen my-auto">
@@ -33,6 +46,7 @@ export const AuthPage = () => {
               className="shadow input border border-gray-400 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600"
               id="email"
               onChange={changeHandler}
+              name="email"
               type="text"
               autoFocus
             />
@@ -47,6 +61,7 @@ export const AuthPage = () => {
             <input
               className="shadow input border border-gray-400 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600"
               id="password"
+              name="password"
               onChange={changeHandler}
               disabled={loading}
               type="password"
