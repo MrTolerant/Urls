@@ -10,7 +10,7 @@ export const LinkCard = ({ link }) => {
           className="text-lg text-blue-600"
           href={link.to}
           target="_blank"
-          rel="noopener norelerer"
+          rel="noopener noreferrer"
         >
           {link.to}
         </a>
@@ -21,7 +21,7 @@ export const LinkCard = ({ link }) => {
           className="text-lg text-blue-600"
           href={link.from}
           target="_blank"
-          rel="noopener noreferer"
+          rel="noopener noreferrer"
         >
           {link.from}
         </a>

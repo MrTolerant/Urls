@@ -26,7 +26,7 @@ function App() {
     >
       <Router>
         {isAuthenticated && <NavBar />}
-        <div className="bg-gray-100 min-w-screen min-h-screen">{routes}</div>
+        <div className="bg-gray-200   h-full  overflow-hidden">{routes}</div>
       </Router>
     </AuthContext.Provider>
   )

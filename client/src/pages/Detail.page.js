@@ -28,7 +28,7 @@ export const DetailPage = () => {
     return <Loader />
   }
   return (
-    <div className="flex flex-row min-h-screen">
+    <div className="flex flex-row min-h-screen overflow-hidden">
       <div className="flex flex-col m-auto">{!loading && link && <LinkCard link={link} />}</div>
     </div>
   )

@@ -12,7 +12,7 @@ export const NavBar = () => {
   }
 
   return (
-    <div className="bg-gray-100 shadow-xl rounded w-screen flex flex-row items-center p-1  bg-white shadow-xs">
+    <div className="bg-gray-200 absolute shadow-2xl  rounded w-full flex flex-row items-center p-1">
       <div className="ml-8 text-lg text-gray-700 hidden md:flex">
         <a href="/">URL shortener</a>
       </div>

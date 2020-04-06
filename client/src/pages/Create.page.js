@@ -23,7 +23,7 @@ export const CreatePage = () => {
     }
   }
   return (
-    <div className="flex flex-row min-h-screen">
+    <div className="flex flex-row min-h-screen overflow-hidden">
       <div className="flex flex-col  m-auto">
         <div className="mb-4 shadow-xl rounded p-4">
           <label
