@@ -25,7 +25,7 @@ export const CreatePage = () => {
   return (
     <div className="flex flex-row min-h-screen">
       <div className="flex flex-col  m-auto">
-        <div className="mb-4 relative shadow-xl rounded p-4">
+        <div className="mb-4 shadow-xl rounded p-4">
           <label
             htmlFor="link"
             className="label  mb-0 -mt-2 pt-4 pl-3 leading-tighter text-gray-600 text-base mt-2 cursor-text text-lg"
