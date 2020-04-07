@@ -1,0 +1,6 @@
+{
+  "port": 5000,
+  "mongoUri": "mongodb+srv://service:zXASqw12@cluster0-oxlj9.mongodb.net/urls?retryWrites=true&w=majority",
+  "jwtSecret": "Petr Secret urls 123",
+  "baseUrl":  "http://url.mrtolerant.ru:5000"
+}
