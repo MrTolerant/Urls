@@ -1,7 +1,7 @@
 variables:
     REVIEW_HOST: ${PROJECT_PREFIX}
     PROJECT_PREFIX: url.mrtolerant.ru
-    DOCKER_NODE: url_mrtolerantru_node
+
 stages:
   - run
 
