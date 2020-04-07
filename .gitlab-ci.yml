@@ -1,6 +1,7 @@
 variables:
     REVIEW_HOST: ${CI_COMMIT_REF_SLUG}.${PROJECT_PREFIX}
     DOCKER_NODE: TEST_mrtolerantru_node
+    PROJECT_PREFIX: mrtolerant.ru
 stages:
   - test
   - run
