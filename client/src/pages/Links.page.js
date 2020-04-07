@@ -20,8 +20,5 @@ export const LinksPage = () => {
     fetchLinks()
   }, [fetchLinks])
 
-  if (loading) {
-    return <Loader />
-  }
-  return <>{!loading && <LinksList links={links} />}</>
+  return <>{loading ? <Loader /> : <LinksList links={links} />}</>
 }

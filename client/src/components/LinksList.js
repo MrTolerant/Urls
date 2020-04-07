@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 export const LinksList = ({ links }) => {
   return (
     <div className="flex flex-row min-h-screen overflow-hidden">
-      <div className="flex flex-col m-auto">
-        <div className="mb-4  shadow-xl rounded p-6   m-auto rounded">
+      <div className="flex flex-col mx-auto mt-20 mb-4">
+        <div className="shadow-xl rounded p-2 m-auto rounded">
           {!links.length ? (
             <p>The is no URLs</p>
           ) : (
@@ -22,7 +22,7 @@ export const LinksList = ({ links }) => {
                     Shortened
                   </th>
                   <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                    Action
+                    Clicks
                   </th>
                 </tr>
               </thead>
@@ -62,14 +62,11 @@ export const LinksList = ({ links }) => {
                       </td>
                       <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                         <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
-                          Action
+                          Clicks
                         </span>
-                        <Link
-                          to={`/detail/${link._id}`}
-                          className="text-blue-400 hover:text-blue-600 underline"
-                        >
-                          Open
-                        </Link>
+                        <span className="rounded text-gray-800 py-1 px-3 text-xs font-bold">
+                          {link.clicks}
+                        </span>
                       </td>
                     </tr>
                   )
